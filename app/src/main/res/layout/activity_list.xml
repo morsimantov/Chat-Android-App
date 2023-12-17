@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".contacts.ListActivity"
+    android:background="@drawable/contacts_background"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/contactsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="@color/color_bar_contacts">
+            <ImageView
+                android:id="@+id/contacts_backBtn"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/round_back_light_10"
+                android:paddingStart="12sp"
+                android:paddingEnd="2dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/back_btn" />
+            <TextView
+                android:id="@+id/messagesHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contacts_contactsHeader"
+                android:layout_toEndOf="@+id/contacts_backBtn"
+                android:textColor="@color/black"
+                android:paddingStart="24dp"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:layout_centerVertical="true"/>
+
+            <RelativeLayout
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_alignParentRight="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userProfilePic"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/profile_pic_blue"
+                    android:layout_alignParentRight="true"
+                    android:paddingEnd="30dp"
+                    app:civ_border_color="@color/design_default_color_primary"
+                    app:civ_border_width="1dp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/contacts_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="56dp"
+                    android:text="name"
+                    android:textColor="#6572BC"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/contactsHeader">
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/refreshChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/contactsRecyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </LinearLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="660dp"
+            android:layout_marginEnd="11dp"
+            android:paddingBottom="10dp"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:backgroundTint="@color/floating_btn_color"
+            app:rippleColor="@color/floating_btn_color" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginTop="595dp"
+            android:layout_marginBottom="10dp"
+            android:paddingBottom="10dp"
+            android:src="@drawable/ic_baseline_person_add_24"
+            app:backgroundTint="@color/floating_btn_color"
+            app:rippleColor="@color/floating_btn_color" />
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

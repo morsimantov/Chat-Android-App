@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">myapplication</string>
+    <string name="login_loginBtn">Login</string>
+    <string name="login_password">Password</string>
+    <string name="login_etUsername">Username</string>
+    <string name="login_etPassword">Password</string>
+    <string name="login_header">Chat App</string>
+    <string name="register_header">Register</string>
+    <string name="registration_header">Register</string>
+    <string name="registration_etUsername">Username</string>
+    <string name="registration_etNickname">Nickname</string>
+    <string name="registration_etPassword">Password</string>
+    <string name="registration_etConfirmPassword">Confirm password</string>
+    <string name="registration_registerBtn">Register</string>
+    <string name="login_registerBtn">Register</string>
+    <string name="login_notRegisteredText">Not registered yet?</string>
+    <string name="registration_alreadyRegisteredText">already registered?</string>
+    <string name="registration_loginBtn">Login</string>
+    <string name="contacts_contactsHeader">Contacts</string>
+    <string name="chat_online">Online</string>
+    <string name="chat_typeMsg">Type your message here...</string>
+    <string name="btnSave">Save</string>
+    <string name="btnSaveMessage">Send Message</string>
+    <string name="BaseUrl">http://10.0.2.2:5088/api/</string>
+
+</resources>

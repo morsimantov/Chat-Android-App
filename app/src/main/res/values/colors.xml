@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="cool_light_green">#2AF598</color>
+    <color name="cool_blue">#009EFD</color>
+    <color name="light_blue">#68B2E4</color>
+    <color name="dark_blue">#4464D8</color>
+    <color name="deep_orange">#F53803</color>
+    <color name="light_orange">#F5D020</color>
+    <color name="deep_orange_variant">#FCE83502</color>
+    <color name="theme_color">#2176FF</color>
+    <color name="theme_color_8">#142176FF</color>
+    <color name="light_8">#14000000</color>
+    <color name="color_text">#BAFFFFFF</color>
+    <color name="color_text_main">#736D6D</color>
+    <color name="color_hint_main">@color/white</color>
+    <color name="color_text_header">#90ffffff</color>
+    <color name="floating_btn_color">#F5C0E2FD</color>
+    <color name="color_edit_settings">#736D6D</color>
+    <color name="color_bar_contacts">#142176FF</color>
+    <color name="color_save_settings">#4C5DBC</color>
+    <color name="color_not_registered">@color/black</color>
+    <color name="color_separator">#B5A5A5</color>
+
+</resources>
