@@ -17,11 +17,14 @@ import androidx.room.Room;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.AppDB;
 import com.example.myapplication.chats.ChatDao;
@@ -30,10 +33,23 @@ import com.example.myapplication.contacts.ContactDao;
 import com.example.myapplication.viewmodels.ContactViewModel;
 import com.example.myapplication.viewmodels.ContactViewModelFactory;
 import com.example.myapplication.viewmodels.MessageViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MessageActivity extends AppCompatActivity {
     private AppDB db;
@@ -60,6 +76,17 @@ public class MessageActivity extends AppCompatActivity {
         Intent serviceIntent = new Intent(this, MyService.class);
         startService(serviceIntent);
 
+
+        // firebase - send message from server to any device by getting its token
+        // get the id of the app , we will get the token id of the app
+        // the app needs to contact the api
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && task.getResult() != null) {
+                        String userToken = task.getResult();
+                    }
+                });
+
         username = activityIntent.getStringExtra("username");
         contactName = activityIntent.getStringExtra("contactName");
 
@@ -84,6 +111,8 @@ public class MessageActivity extends AppCompatActivity {
         EditText messageEditText = findViewById(R.id.messageEditText);
         TextView contactNameView = findViewById(R.id.chat_contactName);
 
+
+
         contactNameView.setText(contactName);
 
         messagesRecyclerView = (RecyclerView) findViewById(R.id.chattingRecyclerView);
@@ -105,6 +134,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
+
         btnAddMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,6 +153,7 @@ public class MessageActivity extends AppCompatActivity {
                 // clear edit text
                 messageEditText.setText("");
                 swipeRefreshLayout.setRefreshing(false);
+//                sendNotification(username, newMessage.content);
             }
         });
 
@@ -133,4 +164,33 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+//    private void sendNotification(String title, String message) {
+//        String token = "";
+//        OkHttpClient client = new OkHttpClient();
+//        MediaType mediaType = MediaType.parse("application/json");
+//        JSONObject jsonNotificationObj = new JSONObject();
+//        JSONObject wholeObj = new JSONObject();
+//        try {
+//            jsonNotificationObj.put("title", title);
+//            jsonNotificationObj.put("body", message);
+//            wholeObj.put("to", token);
+//            wholeObj.put("notification", jsonNotificationObj);
+//        } catch (JSONException e) {
+//            Log.d("fail", e.toString());
+//        }
+//        RequestBody requestBody = RequestBody.create(mediaType, wholeObj.toString());
+//        Request request = new Request.Builder().url("https://fcm.googleapis.com/fcm/send")
+//                .post(requestBody)
+//                .addHeader("Authorization", "key=")
+//                .addHeader("Content-Type", "application/json").build();
+//        try {
+//            Response response = client.newCall(request).execute();
+//        } catch (IOException e) {
+//            Log.d("fail", e.toString());
+//        }
+//    }
 }

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.myapplication.contacts.ContactsListAdapter;
 import com.example.myapplication.contacts.FormActivity;
 import com.example.myapplication.contacts.ListActivity;
+import com.example.myapplication.messages.MessageActivity;
 import com.example.myapplication.users.User;
 import com.example.myapplication.users.UserDao;
 import com.example.myapplication.viewmodels.ContactViewModel;
@@ -30,6 +31,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 //import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,13 +46,6 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_main);
 
-        // firebase - send message from server to any device by getting its token
-        // get the id of the app , we will get the token id of the app
-        // the app needs to contact the api
-//        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this, instanceIdResult -> {
-//            String newToken = instanceIdResult.getToken();
-//        });
-
         TextView username = (TextView) findViewById(R.id.login_username);
         TextView password = (TextView) findViewById(R.id.login_password);
 
@@ -64,6 +59,28 @@ public class MainActivity extends AppCompatActivity {
         userViewModel = new UserViewModel(getApplicationContext(), server);
 
         userDao = db.userDao();
+        System.out.println("hello");
+
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        System.out.println("token: " + token);
+                        // Log and toast
+//                        Log.d("TAG", token);
+
+//                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
