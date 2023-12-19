@@ -2,7 +2,6 @@ package com.example.myapplication.contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
-import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,13 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myapplication.AppDB;
+import com.example.myapplication.db.AppDB;
 import com.example.myapplication.R;
-import com.example.myapplication.RegistrationActivity;
-import com.example.myapplication.chats.Chat;
-import com.example.myapplication.chats.ChatDao;
-import com.example.myapplication.users.User;
-import com.example.myapplication.users.UserDao;
+import com.example.myapplication.db.ChatDao;
+import com.example.myapplication.db.ContactDao;
+import com.example.myapplication.models.Contact;
+import com.example.myapplication.models.User;
+import com.example.myapplication.db.UserDao;
 import com.example.myapplication.viewmodels.ContactViewModel;
 import com.example.myapplication.viewmodels.ContactViewModelFactory;
 import com.example.myapplication.viewmodels.UserViewModel;

@@ -6,13 +6,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.myapplication.R;
 //import com.example.myapplication.Transfer;
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.contacts.ContactDao;
-import com.example.myapplication.messages.Message;
-import com.example.myapplication.messages.MessageDao;
-import com.example.myapplication.messages.NewMessageObject;
+import com.example.myapplication.models.Message;
+import com.example.myapplication.db.MessageDao;
+import com.example.myapplication.models.NewMessageObject;
+import com.example.myapplication.models.Transfer;
 import com.example.myapplication.repositories.MessagesRepository;
 
 import java.util.List;
@@ -23,7 +21,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Query;
 
 
 public class MessageAPI {

@@ -2,8 +2,9 @@ package com.example.myapplication.messages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.MyService;
-import com.example.myapplication.chats.Chat;
+import com.example.myapplication.MyFirebaseService;
+import com.example.myapplication.db.MessageDao;
+import com.example.myapplication.models.Chat;
 import com.example.myapplication.R;
 
 import android.content.SharedPreferences;
@@ -13,43 +14,26 @@ import androidx.lifecycle.Observer;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.myapplication.AppDB;
-import com.example.myapplication.chats.ChatDao;
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.contacts.ContactDao;
+import com.example.myapplication.db.AppDB;
+import com.example.myapplication.db.ChatDao;
+import com.example.myapplication.models.Contact;
+import com.example.myapplication.models.Message;
 import com.example.myapplication.viewmodels.ContactViewModel;
 import com.example.myapplication.viewmodels.ContactViewModelFactory;
 import com.example.myapplication.viewmodels.MessageViewModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
-
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class MessageActivity extends AppCompatActivity {
     private AppDB db;
@@ -73,7 +57,7 @@ public class MessageActivity extends AppCompatActivity {
 
         Intent activityIntent = getIntent();
 
-        Intent serviceIntent = new Intent(this, MyService.class);
+        Intent serviceIntent = new Intent(this, MyFirebaseService.class);
         startService(serviceIntent);
 
 

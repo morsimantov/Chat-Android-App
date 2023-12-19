@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.db;
 
 import android.content.Context;
 
@@ -6,14 +6,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.Database;
 
-import com.example.myapplication.chats.Chat;
-import com.example.myapplication.chats.ChatDao;
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.contacts.ContactDao;
-import com.example.myapplication.messages.Message;
-import com.example.myapplication.messages.MessageDao;
-import com.example.myapplication.users.User;
-import com.example.myapplication.users.UserDao;
+import com.example.myapplication.models.Chat;
+import com.example.myapplication.models.Contact;
+import com.example.myapplication.models.Message;
+import com.example.myapplication.models.User;
 
 @Database(entities = {Contact.class, User.class, Chat.class, Message.class}, version = 5, exportSchema = false)
 public abstract class AppDB extends RoomDatabase {

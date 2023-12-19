@@ -1,13 +1,10 @@
 package com.example.myapplication.contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.Observer;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,24 +12,19 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.myapplication.AppDB;
-import com.example.myapplication.MainActivity;
+import com.example.myapplication.db.AppDB;
 import com.example.myapplication.R;
-import com.example.myapplication.messages.Message;
+import com.example.myapplication.db.ContactDao;
 import com.example.myapplication.messages.MessageActivity;
-import com.example.myapplication.messages.MessagesListAdapter;
+import com.example.myapplication.models.Contact;
 import com.example.myapplication.settings.SettingsActivity;
 import com.example.myapplication.viewmodels.ContactViewModel;
 import com.example.myapplication.viewmodels.ContactViewModelFactory;
-import com.example.myapplication.viewmodels.MessageViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

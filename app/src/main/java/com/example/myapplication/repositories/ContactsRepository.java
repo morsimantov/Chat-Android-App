@@ -1,17 +1,15 @@
 package com.example.myapplication.repositories;
 
 import android.content.Context;
-import android.net.Uri;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.room.Room;
-import com.example.myapplication.api.Invitation;
-import com.example.myapplication.AppDB;
-import com.example.myapplication.R;
+
+import com.example.myapplication.models.Invitation;
+import com.example.myapplication.db.AppDB;
 import com.example.myapplication.api.ContactsAPI;
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.contacts.ContactDao;
+import com.example.myapplication.models.Contact;
+import com.example.myapplication.db.ContactDao;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -15,10 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.messages.Message;
-import com.example.myapplication.messages.MessagesListAdapter;
+import com.example.myapplication.models.Contact;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapter.ContactViewHolder> {

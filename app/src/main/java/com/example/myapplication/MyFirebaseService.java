@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -12,7 +11,7 @@ import androidx.core.app.NotificationManagerCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-public class MyService extends FirebaseMessagingService {
+public class MyFirebaseService extends FirebaseMessagingService {
 
     private static final String CHANNEL_ID = "myFirebaseChannel";
 

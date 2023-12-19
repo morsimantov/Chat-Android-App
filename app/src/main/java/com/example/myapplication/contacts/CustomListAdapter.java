@@ -1,11 +1,8 @@
 package com.example.myapplication.contacts;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -20,9 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.myapplication.R;
+import com.example.myapplication.models.Contact;
 
-import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class CustomListAdapter extends ArrayAdapter<Contact> {

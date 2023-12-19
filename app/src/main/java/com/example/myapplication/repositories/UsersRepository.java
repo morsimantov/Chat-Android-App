@@ -2,23 +2,10 @@ package com.example.myapplication.repositories;
 
 import android.content.Context;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
-import com.example.myapplication.AppDB;
-import com.example.myapplication.api.MessageAPI;
+import com.example.myapplication.db.AppDB;
 import com.example.myapplication.api.UsersAPI;
-import com.example.myapplication.chats.ChatDao;
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.messages.Message;
-import com.example.myapplication.messages.MessageDao;
-import com.example.myapplication.users.User;
-import com.example.myapplication.users.UserDao;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
+import com.example.myapplication.models.User;
+import com.example.myapplication.db.UserDao;
 
 public class UsersRepository {
     private UserDao userDao;

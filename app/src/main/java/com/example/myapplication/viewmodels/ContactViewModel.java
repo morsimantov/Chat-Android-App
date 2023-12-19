@@ -5,8 +5,7 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.myapplication.api.ContactsAPI;
-import com.example.myapplication.contacts.Contact;
+import com.example.myapplication.models.Contact;
 import com.example.myapplication.repositories.ContactsRepository;
 
 import java.util.List;

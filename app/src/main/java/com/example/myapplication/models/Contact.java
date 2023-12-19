@@ -1,4 +1,4 @@
-package com.example.myapplication.contacts;
+package com.example.myapplication.models;
 
 
 import androidx.room.Entity;

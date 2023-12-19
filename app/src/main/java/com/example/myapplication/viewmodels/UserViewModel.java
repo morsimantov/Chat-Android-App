@@ -4,11 +4,8 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.messages.Message;
-import com.example.myapplication.repositories.MessagesRepository;
 import com.example.myapplication.repositories.UsersRepository;
-import com.example.myapplication.users.User;
+import com.example.myapplication.models.User;
 
 import java.util.List;
 

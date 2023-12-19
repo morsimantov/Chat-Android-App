@@ -1,4 +1,4 @@
-package com.example.myapplication.messages;
+package com.example.myapplication.models;
 
 public class NewMessageObject {
     public String userName;

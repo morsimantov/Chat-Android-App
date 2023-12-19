@@ -1,4 +1,4 @@
-package com.example.myapplication.chats;
+package com.example.myapplication.db;
 
 
 import androidx.room.Dao;
@@ -6,6 +6,8 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.example.myapplication.models.Chat;
 
 import java.util.List;
 @Dao

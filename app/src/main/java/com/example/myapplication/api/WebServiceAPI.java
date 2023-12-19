@@ -1,25 +1,25 @@
 package com.example.myapplication.api;
 
-
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-//import com.example.mychatapp.Invitation;
-//import com.example.mychatapp.Transfer;
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.messages.Message;
-import com.example.myapplication.messages.NewMessageObject;
-import com.example.myapplication.users.User;
-import com.example.myapplication.api.Invitation;
+import com.example.myapplication.models.Invitation;
+import com.example.myapplication.models.Contact;
+import com.example.myapplication.models.Message;
+import com.example.myapplication.models.NewMessageObject;
+import com.example.myapplication.models.Transfer;
+import com.example.myapplication.models.User;
+import com.example.myapplication.models.UserToken;
 
 public interface WebServiceAPI {
+
+    @POST("connectFirebase")
+    Call<Void> ConnectFirebase(@Body UserToken userToken);
 
     @GET("contacts")
     Call<List<Contact>> getContacts(@Query("username") String username);

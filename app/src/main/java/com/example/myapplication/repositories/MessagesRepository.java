@@ -5,18 +5,14 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.myapplication.AppDB;
-import com.example.myapplication.api.ContactsAPI;
-import com.example.myapplication.api.Invitation;
+import com.example.myapplication.db.AppDB;
 import com.example.myapplication.api.MessageAPI;
-import com.example.myapplication.api.Transfer;
-import com.example.myapplication.chats.Chat;
-import com.example.myapplication.chats.ChatDao;
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.contacts.ContactDao;
-import com.example.myapplication.messages.Message;
-import com.example.myapplication.messages.MessageDao;
-import com.example.myapplication.messages.NewMessageObject;
+import com.example.myapplication.models.Transfer;
+import com.example.myapplication.models.Chat;
+import com.example.myapplication.db.ChatDao;
+import com.example.myapplication.models.Message;
+import com.example.myapplication.db.MessageDao;
+import com.example.myapplication.models.NewMessageObject;
 
 import java.util.LinkedList;
 import java.util.List;

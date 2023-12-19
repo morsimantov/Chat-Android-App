@@ -1,4 +1,4 @@
-package com.example.myapplication.chats;
+package com.example.myapplication.models;
 
 
 import androidx.room.Entity;

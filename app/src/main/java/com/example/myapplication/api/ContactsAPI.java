@@ -5,18 +5,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
-import okhttp3.logging.HttpLoggingInterceptor;
 
 //import com.example.myapplication.Invitation;
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.contacts.ContactDao;
+import com.example.myapplication.models.Invitation;
+import com.example.myapplication.models.Contact;
+import com.example.myapplication.db.ContactDao;
 import com.example.myapplication.contacts.FormActivity;
 import com.example.myapplication.repositories.ContactsRepository;
-import com.example.myapplication.api.Invitation;
-import java.io.Serializable;
+
 import java.util.List;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;

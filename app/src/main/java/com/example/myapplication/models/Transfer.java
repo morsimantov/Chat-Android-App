@@ -1,4 +1,4 @@
-package com.example.myapplication.api;
+package com.example.myapplication.models;
 
 public class Transfer {
     private String from ;

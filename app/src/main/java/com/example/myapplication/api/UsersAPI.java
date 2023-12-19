@@ -5,9 +5,7 @@ import android.util.Log;
 
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
 
-import java.util.List;
 import java.util.concurrent.Executors;
 
 import retrofit2.Call;
@@ -15,20 +13,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import androidx.lifecycle.MutableLiveData;
 
 
-import com.example.myapplication.contacts.Contact;
-import com.example.myapplication.repositories.ContactsRepository;
 import com.example.myapplication.repositories.UsersRepository;
-import com.example.myapplication.users.User;
-import com.example.myapplication.users.UserDao;
-
-import java.util.List;
-import java.util.concurrent.Executors;
-
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import com.example.myapplication.models.User;
+import com.example.myapplication.db.UserDao;
 
 public class UsersAPI {
     private final UserDao dao;

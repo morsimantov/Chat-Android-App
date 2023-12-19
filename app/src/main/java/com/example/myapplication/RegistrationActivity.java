@@ -4,7 +4,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,23 +12,27 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.contacts.ListActivity;
+import com.example.myapplication.api.FirebaseAPI;
 import com.example.myapplication.databinding.ActivityRegistrationBinding;
-import com.example.myapplication.users.User;
-import com.example.myapplication.users.UserDao;
+import com.example.myapplication.db.AppDB;
+import com.example.myapplication.models.User;
+import com.example.myapplication.db.UserDao;
 import com.example.myapplication.viewmodels.UserViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -39,6 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private AppDB db;
     private UserDao userDao;
     private UserViewModel userViewModel;
+    private FirebaseAPI firebaseAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class RegistrationActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String server = sharedPreferences.getString("server", "10.0.2.2:7170");
         userViewModel = new UserViewModel(getApplicationContext(), server);
+        firebaseAPI = new FirebaseAPI(server);
 
         userDao = db.userDao();
 
@@ -97,6 +102,21 @@ public class RegistrationActivity extends AppCompatActivity {
 //                        userDao.insert(newUser);
                         userViewModel.add(newUser);
                         Toast.makeText(RegistrationActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                        // send the server his token.
+                        FirebaseMessaging.getInstance().getToken()
+                                .addOnCompleteListener(new OnCompleteListener<String>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<String> task) {
+                                        if (!task.isSuccessful()) {
+                                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                                            return;
+                                        }
+                                        // Get new FCM registration token
+                                        String token = task.getResult();
+                                        System.out.println("token: " + token);
+                                        firebaseAPI.connectFirebase(usernameStr, token);
+                                    }
+                                });
                         Intent i = new Intent(RegistrationActivity.this, MainActivity.class);
                         startActivity(i);
                     } else {

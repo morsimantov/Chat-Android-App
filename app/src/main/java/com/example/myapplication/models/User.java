@@ -1,4 +1,4 @@
-package com.example.myapplication.users;
+package com.example.myapplication.models;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
