@@ -15,12 +15,6 @@ public interface ContactDao {
 
     @Query("SELECT * FROM contact WHERE username = :username")
     List<Contact> index(String username);
-//
-//    @Query("SELECT * FROM contact WHERE username = :username")
-//    LiveData<List<Contact>> indexLiveData(String username);
-
-//    @Query("SELECT * FROM contact")
-//    List<Contact> index();
 
     @Query("SELECT * FROM contact WHERE id= :id AND username= :username")
     Contact get(String id, String username);

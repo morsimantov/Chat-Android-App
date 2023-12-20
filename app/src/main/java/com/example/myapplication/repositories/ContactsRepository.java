@@ -53,7 +53,6 @@ public class ContactsRepository {
     }
 
     public void delete(Contact contact) {
-//        ContactsAPI.delete(contact);
         contactDao.delete(contact);
         this.contactListData.postValue(contactDao.index(username));
     }
@@ -83,6 +82,7 @@ public class ContactsRepository {
                     contact.setLastdate(Utils.formatDateTimeString(contact.getLastdate()));
                 }
                 contactDao.insert(contact);
+                contactListData.postValue(contactDao.index(username));
             }).start();
         }
     }
