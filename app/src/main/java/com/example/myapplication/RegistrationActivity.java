@@ -89,7 +89,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
                 else {
                     String usernameStr = username.getText().toString();
-                    User user = userViewModel.get(username.getText().toString(), password.getText().toString());
+                    User user = userViewModel.getUser(usernameStr);
                     if (user == null) {
                         if (encodedImage == null) {
                             encodedImage = "";

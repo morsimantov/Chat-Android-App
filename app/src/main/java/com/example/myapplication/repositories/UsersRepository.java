@@ -34,6 +34,7 @@ public class UsersRepository {
             } catch (InterruptedException e) {
                 // Handle exceptions if necessary
                 e.printStackTrace();
+                return null;
             }
         }
         // Retrieve the user from userDao after userAPI.get has completed
@@ -55,6 +56,7 @@ public class UsersRepository {
             } catch (InterruptedException e) {
                 // Handle exceptions if necessary
                 e.printStackTrace();
+                return null;
             }
         }
         // Retrieve the user from userDao after userAPI.get has completed
@@ -73,6 +75,8 @@ public class UsersRepository {
                 userDao.insert(user);
                 onUserAPIComplete();
             }).start();
+        } else {
+            onUserAPIComplete();
         }
     }
 
@@ -86,6 +90,6 @@ public class UsersRepository {
 
     public synchronized void onUserAPIComplete() {
         // Notify the waiting thread that userAPI.get is complete
-        this.notify();
+        this.notifyAll();
     }
 }

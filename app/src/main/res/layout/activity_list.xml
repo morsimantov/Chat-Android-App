@@ -90,31 +90,33 @@
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="660dp"
-            android:layout_marginEnd="11dp"
-            android:paddingBottom="10dp"
-            android:src="@drawable/ic_baseline_settings_24"
-            app:backgroundTint="@color/floating_btn_color"
-            app:rippleColor="@color/floating_btn_color" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="11dp"
-            android:layout_marginTop="595dp"
+            android:layout_marginTop="532dp"
             android:layout_marginBottom="10dp"
             android:paddingBottom="10dp"
             android:src="@drawable/ic_baseline_person_add_24"
             app:backgroundTint="@color/floating_btn_color"
             app:rippleColor="@color/floating_btn_color" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="595dp"
+            android:layout_marginEnd="11dp"
+            android:paddingBottom="10dp"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:backgroundTint="@color/floating_btn_color"
+            app:rippleColor="@color/floating_btn_color" />
+
+
 
 
 
