@@ -6,6 +6,7 @@ import com.example.myapplication.MyFirebaseService;
 import com.example.myapplication.db.MessageDao;
 import com.example.myapplication.models.Chat;
 import com.example.myapplication.R;
+import com.example.myapplication.Utils;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -32,8 +33,10 @@ import com.example.myapplication.viewmodels.MessageViewModel;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class MessageActivity extends AppCompatActivity {
     private AppDB db;
@@ -123,12 +126,15 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String getTextMessage = messageEditText.getText().toString();
-                // get current timestamp
-                final String currentTime = DateFormat.getDateTimeInstance().format(new Date());
+                // Get the default time zone
+                TimeZone timeZone = TimeZone.getTimeZone("Israel");
+                // Create a SimpleDateFormat with the desired date and time format
+                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                dateFormat.setTimeZone(timeZone);
+                // Get the current date and time in the specified time zone
+                String currentTime = dateFormat.format(new Date());
                 // create a new message
                 Message newMessage = new Message(0, getTextMessage, currentTime, true, chatId);
-                // add message to database
-//                messageDao.insert(newMessage);
                 messageViewModel.add(newMessage);
                 Contact currentContact = contactViewModel.getContact(contactName);
                 currentContact.setLast(getTextMessage);
@@ -137,7 +143,6 @@ public class MessageActivity extends AppCompatActivity {
                 // clear edit text
                 messageEditText.setText("");
                 swipeRefreshLayout.setRefreshing(false);
-//                sendNotification(username, newMessage.content);
             }
         });
 
@@ -148,33 +153,4 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-//    private void sendNotification(String title, String message) {
-//        String token = "";
-//        OkHttpClient client = new OkHttpClient();
-//        MediaType mediaType = MediaType.parse("application/json");
-//        JSONObject jsonNotificationObj = new JSONObject();
-//        JSONObject wholeObj = new JSONObject();
-//        try {
-//            jsonNotificationObj.put("title", title);
-//            jsonNotificationObj.put("body", message);
-//            wholeObj.put("to", token);
-//            wholeObj.put("notification", jsonNotificationObj);
-//        } catch (JSONException e) {
-//            Log.d("fail", e.toString());
-//        }
-//        RequestBody requestBody = RequestBody.create(mediaType, wholeObj.toString());
-//        Request request = new Request.Builder().url("https://fcm.googleapis.com/fcm/send")
-//                .post(requestBody)
-//                .addHeader("Authorization", "key=")
-//                .addHeader("Content-Type", "application/json").build();
-//        try {
-//            Response response = client.newCall(request).execute();
-//        } catch (IOException e) {
-//            Log.d("fail", e.toString());
-//        }
-//    }
 }

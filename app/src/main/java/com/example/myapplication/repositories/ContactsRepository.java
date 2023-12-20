@@ -91,6 +91,9 @@ public class ContactsRepository {
     public void postHandle(int status, Contact contact) {
         if (status == 201) {
             new Thread(() -> {
+                if (contact.getLastdate() != null) {
+                    contact.setLastdate(Utils.formatDateTimeString(contact.getLastdate()));
+                }
                 contactDao.insert(contact);
             }).start();
         }
