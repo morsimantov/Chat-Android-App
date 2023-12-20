@@ -71,7 +71,6 @@ public class FormActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(FormActivity.this, "Contact is already added", Toast.LENGTH_SHORT).show();
             }
-
         });
     }
 }

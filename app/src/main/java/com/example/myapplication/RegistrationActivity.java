@@ -87,19 +87,14 @@ public class RegistrationActivity extends AppCompatActivity {
                 else if (password.getText().toString().matches("[0-9]+") || password.getText().toString().matches("[A-Za-z]+")) {
                     Toast.makeText(RegistrationActivity.this, "Password must contain letters and numbers", Toast.LENGTH_SHORT).show();
                 }
-//                else if (!isValidRegistrationDetails()) {
-//                    Toast.makeText(RegistrationActivity.this, "Please add a profile picture", Toast.LENGTH_SHORT).show();
-//                }
                 else {
                     String usernameStr = username.getText().toString();
-//                    User user = userDao.get(username.getText().toString());
                     User user = userViewModel.get(username.getText().toString(), password.getText().toString());
                     if (user == null) {
                         if (encodedImage == null) {
                             encodedImage = "";
                         }
                         User newUser = new User(username.getText().toString(), nickname.getText().toString(), password.getText().toString(), userServer.getText().toString(), encodedImage);
-//                        userDao.insert(newUser);
                         userViewModel.add(newUser);
                         Toast.makeText(RegistrationActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                         // send the server his token.
@@ -134,7 +129,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 
     private void setListeners() {
@@ -165,7 +159,6 @@ public class RegistrationActivity extends AppCompatActivity {
                             InputStream inputStream = getContentResolver().openInputStream(imageUri);
                             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                             binding.profileImage.setImageBitmap(bitmap);
-//                            binding.textAddImage.setVisibility(View.GONE);
                             encodedImage = encodedImage(bitmap);
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();

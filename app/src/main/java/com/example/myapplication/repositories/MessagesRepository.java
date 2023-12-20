@@ -29,8 +29,6 @@ public class MessagesRepository {
     private String username;
     private String contactId;
 
-
-
     public MessagesRepository(int chatId, Context context, String username, String contactId, String server) {
         this.db = AppDB.getInstance(context);
         this.messageDao = db.messageDao();
@@ -49,10 +47,6 @@ public class MessagesRepository {
     }
 
     public void add(Message message) {
-        // insert message to dao
-//        messageDao.insert(message);
-        // update the live data messages list
-//        this.messageListData.postValue(messageDao.getByChatId(chatId));
         NewMessageObject newMsgObj = new NewMessageObject(this.username, message.content);
         messageAPI.transfer(this, contactId, new Transfer(username, contactId, message.content), newMsgObj);
     }
@@ -87,8 +81,6 @@ public class MessagesRepository {
                     }
 
                 }
-//                List<Message> messages2 = new LinkedList<Message>();
-//                messages2 = messageDao.getByChatId(chatId);
             this.messageListData.postValue(messageDao.getByChatId(chatId));
             }).start();
         }
@@ -106,19 +98,6 @@ public class MessagesRepository {
         messageAPI.post(this, contactId, message);
     }
 
-
-//    private List<Message> updateMessages(List<Message> messages) {
-//        for (Message message : messages) {
-//            Chat chat = chatDao.getByUser(username, contactId);
-//            message.setChatId(chat.getId());
-//        }
-//        return messages;
-//    }
-//
-//    public void refresh() {
-//           this.messagesAPI.get(this);
-//    }
-
     class MessageListData extends MutableLiveData<List<Message>> {
 
         public MessageListData() {
@@ -129,8 +108,6 @@ public class MessagesRepository {
 
         class PrimeThread extends Thread {
             public void run() {
-                // List<Message> a = messageDao.getByChatId(chatId);
-                // List<Message> allList = messageDao.index();
                 messageListData.postValue(messageDao.getByChatId(chatId));
             }
         }
@@ -147,5 +124,4 @@ public class MessagesRepository {
             }
         }
     }
-
 }

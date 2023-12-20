@@ -77,15 +77,10 @@ public class ListActivity extends AppCompatActivity {
         nickname.setText(nicknameStr);
 
         contactsRecyclerView = (RecyclerView) findViewById(R.id.contactsRecyclerView);
-//        messagesRecyclerView.setHasFixedSize(true);
         contactsRecyclerView.setAdapter(adapter);
-//        SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.refreshChat);
-//        swipeRefreshLayout.setEnabled(false);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//        linearLayoutManager.setStackFromEnd(true);
         contactsRecyclerView.setLayoutManager(linearLayoutManager);
-//
+
         contactViewModel.getContacts().observe(this, new Observer<List<Contact>>() {
             @Override
             public void onChanged(List<Contact> contacts) {
@@ -93,11 +88,6 @@ public class ListActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
-//
-//        contactViewModel.getContacts().observe(this, contacts -> {
-//            adapter.updateContacts(contacts);
-//            adapter.notifyDataSetChanged();
-//        });
 
         if (!profilePicId.equals("")) {
             profilePic = profilePicId;
@@ -145,12 +135,9 @@ public class ListActivity extends AppCompatActivity {
         };
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
     }
-
-
 }

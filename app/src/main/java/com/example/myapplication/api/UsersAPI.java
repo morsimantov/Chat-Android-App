@@ -1,11 +1,7 @@
 package com.example.myapplication.api;
 
 import android.util.Log;
-
-
-
 import androidx.annotation.NonNull;
-
 import java.util.concurrent.Executors;
 
 import retrofit2.Call;
@@ -13,7 +9,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
 
 import com.example.myapplication.repositories.UsersRepository;
 import com.example.myapplication.models.User;

@@ -12,4 +12,3 @@ public class MyApplication extends Application {
         context.getApplicationContext();
     }
 }
-

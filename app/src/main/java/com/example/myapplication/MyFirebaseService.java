@@ -20,6 +20,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
         super.onMessageReceived(message);
         createNotificationChannel();
         getFirebaseMessage(message.getNotification().getTitle(), message.getNotification().getBody());
+
     }
 
     private void createNotificationChannel() {
@@ -42,6 +43,4 @@ public class MyFirebaseService extends FirebaseMessagingService {
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
         manager.notify(102, builder.build());
     }
-
-
 }

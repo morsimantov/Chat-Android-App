@@ -1,9 +1,6 @@
 package com.example.myapplication.models;
 
-
 import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
 import androidx.annotation.NonNull;
 
 @Entity(primaryKeys = {"id", "username"})
@@ -27,7 +24,6 @@ public class Contact {
         this.lastdate = lastdate;
         this.profilePic = profilePic;
     }
-
 
     public String getLastdate() {
         return lastdate;

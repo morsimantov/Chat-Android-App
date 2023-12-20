@@ -1,7 +1,5 @@
 package com.example.myapplication.settings;
 
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import com.example.myapplication.R;
 
@@ -12,11 +10,9 @@ import androidx.preference.PreferenceManager;
 import android.content.SharedPreferences;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.RegistrationActivity;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 public class SettingsActivity extends AppCompatActivity {

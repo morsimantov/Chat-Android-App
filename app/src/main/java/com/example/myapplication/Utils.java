@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Utils {
-
     public static String formatDateTimeString(String dateTime) {
         SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
         try {
@@ -21,5 +20,4 @@ public class Utils {
         }
         return null;
     }
-
 }

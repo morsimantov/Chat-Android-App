@@ -6,7 +6,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
-//import com.example.myapplication.Invitation;
 import com.example.myapplication.models.Invitation;
 import com.example.myapplication.models.Contact;
 import com.example.myapplication.db.ContactDao;
@@ -42,7 +41,7 @@ public class ContactsAPI {
                 .build();
         retrofit = new Retrofit.Builder()
                 .client(client)
-                .baseUrl(this.serverUrl) // todo
+                .baseUrl(this.serverUrl)
                 .callbackExecutor(Executors.newSingleThreadExecutor())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -86,7 +85,6 @@ public class ContactsAPI {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-//                Toast.makeText(FormActivity.context, "Contact added you as well", Toast.LENGTH_LONG).show();
                 repository.afterInvite(contact);
             }
 
@@ -97,6 +95,4 @@ public class ContactsAPI {
             }
         });
     }
-
 }
-

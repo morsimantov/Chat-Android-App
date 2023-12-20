@@ -1,6 +1,5 @@
 package com.example.myapplication.settings;
 
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

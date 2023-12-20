@@ -1,12 +1,9 @@
 package com.example.myapplication.messages;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myapplication.MyFirebaseService;
 import com.example.myapplication.db.MessageDao;
 import com.example.myapplication.models.Chat;
 import com.example.myapplication.R;
-import com.example.myapplication.Utils;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,7 +27,6 @@ import com.example.myapplication.models.Message;
 import com.example.myapplication.viewmodels.ContactViewModel;
 import com.example.myapplication.viewmodels.ContactViewModelFactory;
 import com.example.myapplication.viewmodels.MessageViewModel;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -63,17 +59,6 @@ public class MessageActivity extends AppCompatActivity {
         Intent serviceIntent = new Intent(this, MyFirebaseService.class);
         startService(serviceIntent);
 
-
-        // firebase - send message from server to any device by getting its token
-        // get the id of the app , we will get the token id of the app
-        // the app needs to contact the api
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult() != null) {
-                        String userToken = task.getResult();
-                    }
-                });
-
         username = activityIntent.getStringExtra("username");
         contactName = activityIntent.getStringExtra("contactName");
 
@@ -97,19 +82,13 @@ public class MessageActivity extends AppCompatActivity {
         ImageView btnAddMessage = findViewById(R.id.sendBtn);
         EditText messageEditText = findViewById(R.id.messageEditText);
         TextView contactNameView = findViewById(R.id.chat_contactName);
-
-
-
         contactNameView.setText(contactName);
 
         messagesRecyclerView = (RecyclerView) findViewById(R.id.chattingRecyclerView);
-//        messagesRecyclerView.setHasFixedSize(true);
-
         messagesRecyclerView.setAdapter(adapter);
         SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.refreshChat);
         swipeRefreshLayout.setEnabled(false);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         linearLayoutManager.setStackFromEnd(true);
         messagesRecyclerView.setLayoutManager(linearLayoutManager);
 
@@ -120,7 +99,6 @@ public class MessageActivity extends AppCompatActivity {
                 messagesRecyclerView.scrollToPosition(messages.size() - 1);
             }
         });
-
 
         btnAddMessage.setOnClickListener(new View.OnClickListener() {
             @Override
