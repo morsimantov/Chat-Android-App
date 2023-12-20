@@ -68,7 +68,7 @@ Installations required:
 ## Instructions
 
 API project link:
-https://github.com/morsimantov/Chat-App-Web-API
+https://github.com/morsimantov/Chat-App-API-Server
 
 Get the code of our project using the command git clone and copy the url.
 Run the Android studio code and start using the chat app.
