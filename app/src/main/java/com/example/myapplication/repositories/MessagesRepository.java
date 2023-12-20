@@ -13,6 +13,7 @@ import com.example.myapplication.db.ChatDao;
 import com.example.myapplication.models.Message;
 import com.example.myapplication.db.MessageDao;
 import com.example.myapplication.models.NewMessageObject;
+import com.example.myapplication.Utils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -62,12 +63,18 @@ public class MessagesRepository {
                 messageDao.deleteAll();
                 if (chatId != 0) {
                     for (Message message : messages) {
+                        if (message.created != null) {
+                            message.setCreated(Utils.formatDateTimeString(message.created));
+                        }
                         messageDao.insert(message);
                     }
                 } else {
                     int newChatId = 0;
                     for (Message message : messages) {
                         newChatId = message.chatId;
+                        if (message.created != null) {
+                            message.setCreated(Utils.formatDateTimeString(message.created));
+                        }
                         messageDao.insert(message);
                     }
                     Chat currentChat = chatDao.getById(newChatId);

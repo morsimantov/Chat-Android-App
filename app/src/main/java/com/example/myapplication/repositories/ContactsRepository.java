@@ -5,12 +5,18 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.myapplication.Utils;
 import com.example.myapplication.models.Invitation;
 import com.example.myapplication.db.AppDB;
 import com.example.myapplication.api.ContactsAPI;
 import com.example.myapplication.models.Contact;
 import com.example.myapplication.db.ContactDao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -71,6 +77,10 @@ public class ContactsRepository {
                 for (Contact contact : contacts) {
                     contact.setUsername(username);
                     contact.setProfilePic("");
+                    if (contact.getLastdate() != null) {
+                        contact.setLastdate(Utils.formatDateTimeString(contact.getLastdate()));
+                    }
+                    System.out.println("created: " + contact.getLastdate());
                     contactDao.insert(contact);
                 }
                 contactListData.postValue(contacts);
