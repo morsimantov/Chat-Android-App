@@ -12,7 +12,7 @@ This is an Android Chat App we created in Java. All you need is to register and 
 The app contains several screens, including registration screen, login screen, contacts screen and chatting screen.
 
 
-We created a RESTful API server using MVC pattern in ASP.NET. This is the link to the server side's code:
+We created a RESTful API server using MVC pattern in ASP.NET. This is the link to the server side's code: https://github.com/morsimantov/Chat-App-API-Server
 
 The app uses Rooms and has a local DB that synchronizes with the server anytime the app is in use.
 
